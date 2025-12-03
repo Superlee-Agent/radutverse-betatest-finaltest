@@ -402,6 +402,7 @@ const IpImagineInput = ({
 
       <button
         type="submit"
+        data-imagine-submit
         disabled={
           waiting ||
           (!input.trim() &&
