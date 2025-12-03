@@ -13,6 +13,7 @@ type DisplaySession = {
 };
 
 const History = () => {
+  const navigate = useNavigate();
   const [sessions, setSessions] = useState<ChatSession[]>([]);
   const [currentMessages, setCurrentMessages] = useState<Message[]>([]);
   const [activeId, setActiveId] = useState<string>("current");
@@ -177,7 +178,7 @@ const History = () => {
   );
 
   return (
-    <DashboardLayout title="Chat History">
+    <DashboardLayout title="Chat History" onLogoClick={() => navigate("/")}>
       <div className="flex min-h-0 flex-1 flex-col md:flex-row">
         <aside className="hidden w-80 flex-col border-r border-white/10 px-6 py-8 text-sm text-slate-300 md:flex">
           <label className="flex items-center gap-2 rounded-lg border border-white/10 bg-white/5 py-[7px] pl-[11px] pr-0 text-xs uppercase tracking-wide text-slate-300">
