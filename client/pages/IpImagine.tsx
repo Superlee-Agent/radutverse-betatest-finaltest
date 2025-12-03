@@ -745,6 +745,15 @@ const IpImagine = () => {
           />
         )}
       </AnimatePresence>
+
+      <IpImagineTour
+        tourStep={tourStep}
+        uploadButtonRect={uploadButtonRect}
+        inputRect={inputRect}
+        submitButtonRect={submitButtonRect}
+        onNext={nextStep}
+        onSkip={skipTour}
+      />
     </DashboardLayout>
   );
 };
