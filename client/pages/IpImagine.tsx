@@ -11,12 +11,14 @@ import DashboardLayout from "@/components/layout/DashboardLayout";
 import ChatHeaderActions from "@/components/ip/assistant/ChatHeaderActions";
 import SidebarExtras from "@/components/ip/assistant/SidebarExtras";
 import IpImagineInput from "@/components/ip/imagine/Input";
+import { IpImagineTour } from "@/components/ip/imagine/IpImagineTour";
 import {
   PopularIPGrid,
   AddRemixImageModal,
   type PreviewImagesState,
 } from "@/components/ip/remix";
 import useGeminiGenerator from "@/hooks/useGeminiGenerator";
+import { useIpImagineTour } from "@/hooks/useIpImagineTour";
 import { getCurrentTimestamp } from "@/lib/ip-assistant/utils";
 import { calculateBlobHash } from "@/lib/utils/hash";
 import { calculatePerceptualHash } from "@/lib/utils/perceptual-hash";
