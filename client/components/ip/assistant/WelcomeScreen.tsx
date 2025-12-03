@@ -15,7 +15,6 @@ export const WelcomeScreen = ({
   const [guideStep, setGuideStep] = useState<GuideStep>("idle");
   const [fileButtonRect, setFileButtonRect] = useState<DOMRect | null>(null);
   const [inputRect, setInputRect] = useState<DOMRect | null>(null);
-  const [remixButtonRect, setRemixButtonRect] = useState<DOMRect | null>(null);
 
   useEffect(() => {
     if (guideStep === "choose-file") {
