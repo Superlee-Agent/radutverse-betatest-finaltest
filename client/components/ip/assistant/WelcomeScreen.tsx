@@ -103,7 +103,6 @@ export const WelcomeScreen = ({
               Licensing your works & explore
             </button>
             <button
-              data-remix-button
               onClick={handleRemixClick}
               className="px-8 py-4 rounded-lg font-semibold text-white transition-all duration-200 bg-slate-700 hover:bg-slate-600 hover:shadow-lg hover:shadow-slate-600/30"
             >
