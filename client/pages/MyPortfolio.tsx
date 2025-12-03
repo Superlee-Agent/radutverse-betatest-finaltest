@@ -152,8 +152,8 @@ const MyPortfolio = () => {
   // Show connect wallet view when not authenticated
   if (!authenticated || !primaryWalletAddress) {
     return (
-    <DashboardLayout title="My Portfolio" onLogoClick={() => navigate("/")}>
-      <ConnectWalletView
+      <DashboardLayout title="My Portfolio" onLogoClick={() => navigate("/")}>
+        <ConnectWalletView
           onConnect={handleWalletConnect}
           onDisconnect={handleWalletDisconnect}
           isConnected={false}
