@@ -1,15 +1,20 @@
 import { useEffect, useState } from "react";
 
-type TourStep = "idle" | "upload-image" | "enter-prompt" | "submit" | "complete";
+type TourStep =
+  | "idle"
+  | "upload-image"
+  | "enter-prompt"
+  | "submit"
+  | "complete";
 
 export const useIpImagineTour = () => {
   const [tourStep, setTourStep] = useState<TourStep>("idle");
   const [uploadButtonRect, setUploadButtonRect] = useState<DOMRect | null>(
-    null
+    null,
   );
   const [inputRect, setInputRect] = useState<DOMRect | null>(null);
   const [submitButtonRect, setSubmitButtonRect] = useState<DOMRect | null>(
-    null
+    null,
   );
 
   useEffect(() => {
