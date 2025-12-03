@@ -11,12 +11,14 @@ import DashboardLayout from "@/components/layout/DashboardLayout";
 import ChatHeaderActions from "@/components/ip/assistant/ChatHeaderActions";
 import SidebarExtras from "@/components/ip/assistant/SidebarExtras";
 import IpImagineInput from "@/components/ip/imagine/Input";
+import { IpImagineTour } from "@/components/ip/imagine/IpImagineTour";
 import {
   PopularIPGrid,
   AddRemixImageModal,
   type PreviewImagesState,
 } from "@/components/ip/remix";
 import useGeminiGenerator from "@/hooks/useGeminiGenerator";
+import { useIpImagineTour } from "@/hooks/useIpImagineTour";
 import { getCurrentTimestamp } from "@/lib/ip-assistant/utils";
 import { calculateBlobHash } from "@/lib/utils/hash";
 import { calculatePerceptualHash } from "@/lib/utils/perceptual-hash";
@@ -30,6 +32,16 @@ const IpImagine = () => {
   const guestMode = context?.guestMode || false;
   const { authenticated } = usePrivy();
   const { wallets } = useWallets();
+  const {
+    tourStep,
+    uploadButtonRect,
+    inputRect,
+    submitButtonRect,
+    startTour,
+    nextStep,
+    skipTour,
+    completeTour,
+  } = useIpImagineTour();
 
   const {
     generate,
@@ -70,6 +82,15 @@ const IpImagine = () => {
 
   const uploadRef = useRef<HTMLInputElement | null>(null);
   const inputRef = useRef<HTMLTextAreaElement | HTMLInputElement | null>(null);
+
+  // Auto-start tour if coming from welcome screen
+  useEffect(() => {
+    const shouldStartTour = sessionStorage.getItem("start-ip-imagine-tour");
+    if (shouldStartTour === "true") {
+      sessionStorage.removeItem("start-ip-imagine-tour");
+      startTour();
+    }
+  }, [startTour]);
 
   // Track new results for stacking effect
   useEffect(() => {
@@ -733,6 +754,15 @@ const IpImagine = () => {
           />
         )}
       </AnimatePresence>
+
+      <IpImagineTour
+        tourStep={tourStep}
+        uploadButtonRect={uploadButtonRect}
+        inputRect={inputRect}
+        submitButtonRect={submitButtonRect}
+        onNext={nextStep}
+        onSkip={skipTour}
+      />
     </DashboardLayout>
   );
 };
