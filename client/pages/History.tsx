@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import DashboardLayout from "@/components/layout/DashboardLayout";
 import { CURRENT_SESSION_KEY, STORAGE_KEY } from "@/lib/ip-assistant/constants";
 import { getMessagePreview } from "@/lib/ip-assistant/utils";
