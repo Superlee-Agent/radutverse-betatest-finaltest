@@ -6,7 +6,14 @@ type WelcomeScreenProps = {
   onRemixWork: () => void;
 };
 
-type GuideStep = "idle" | "choose-file" | "type-register" | "complete";
+type GuideStep =
+  | "idle"
+  | "choose-file"
+  | "type-register"
+  | "complete"
+  | "remix-intro"
+  | "remix-prompt"
+  | "remix-complete";
 
 export const WelcomeScreen = ({
   onRegisterWork,
