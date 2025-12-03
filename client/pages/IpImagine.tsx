@@ -85,12 +85,12 @@ const IpImagine = () => {
 
   // Auto-start tour if coming from welcome screen
   useEffect(() => {
-    const startTour = sessionStorage.getItem("start-ip-imagine-tour");
-    if (startTour === "true") {
+    const shouldStartTour = sessionStorage.getItem("start-ip-imagine-tour");
+    if (shouldStartTour === "true") {
       sessionStorage.removeItem("start-ip-imagine-tour");
       startTour();
     }
-  }, []);
+  }, [startTour]);
 
   // Track new results for stacking effect
   useEffect(() => {
