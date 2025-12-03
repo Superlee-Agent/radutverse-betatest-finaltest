@@ -83,6 +83,15 @@ const IpImagine = () => {
   const uploadRef = useRef<HTMLInputElement | null>(null);
   const inputRef = useRef<HTMLTextAreaElement | HTMLInputElement | null>(null);
 
+  // Auto-start tour if coming from welcome screen
+  useEffect(() => {
+    const startTour = sessionStorage.getItem("start-ip-imagine-tour");
+    if (startTour === "true") {
+      sessionStorage.removeItem("start-ip-imagine-tour");
+      startTour();
+    }
+  }, []);
+
   // Track new results for stacking effect
   useEffect(() => {
     if (resultUrl) {
