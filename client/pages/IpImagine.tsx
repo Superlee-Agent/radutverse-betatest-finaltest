@@ -32,6 +32,16 @@ const IpImagine = () => {
   const guestMode = context?.guestMode || false;
   const { authenticated } = usePrivy();
   const { wallets } = useWallets();
+  const {
+    tourStep,
+    uploadButtonRect,
+    inputRect,
+    submitButtonRect,
+    startTour,
+    nextStep,
+    skipTour,
+    completeTour,
+  } = useIpImagineTour();
 
   const {
     generate,
