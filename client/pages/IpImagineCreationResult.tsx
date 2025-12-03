@@ -232,7 +232,8 @@ const IpImagineCreationResult = () => {
       sidebarExtras={sidebarExtras}
     >
       <div className="chat-box px-3 sm:px-4 md:px-12 pt-4 pb-24 flex-1 overflow-y-auto bg-transparent scroll-smooth">
-        {context.creations.filter((c) => c.isGuest === guestMode).length > 0 && (
+        {context.creations.filter((c) => c.isGuest === guestMode).length >
+          0 && (
           <div className="flex items-center justify-between mb-4">
             <h2 className="text-xl font-bold text-white">Results</h2>
             <button
