@@ -22,6 +22,7 @@ export const WelcomeScreen = ({
   const [guideStep, setGuideStep] = useState<GuideStep>("idle");
   const [fileButtonRect, setFileButtonRect] = useState<DOMRect | null>(null);
   const [inputRect, setInputRect] = useState<DOMRect | null>(null);
+  const [remixButtonRect, setRemixButtonRect] = useState<DOMRect | null>(null);
 
   useEffect(() => {
     if (guideStep === "choose-file") {
@@ -49,6 +50,32 @@ export const WelcomeScreen = ({
         return () => window.removeEventListener("resize", updateRect);
       }
     }
+
+    if (guideStep === "remix-intro") {
+      const remixBtn = document.querySelector("[data-remix-button]");
+      if (remixBtn) {
+        setRemixButtonRect(remixBtn.getBoundingClientRect());
+        const updateRect = () => {
+          setRemixButtonRect(remixBtn.getBoundingClientRect());
+        };
+        window.addEventListener("resize", updateRect);
+        return () => window.removeEventListener("resize", updateRect);
+      }
+    }
+
+    if (guideStep === "remix-prompt") {
+      const input = document.querySelector(
+        "[data-imagine-input]",
+      ) as HTMLTextAreaElement;
+      if (input) {
+        setInputRect(input.getBoundingClientRect());
+        const updateRect = () => {
+          setInputRect(input.getBoundingClientRect());
+        };
+        window.addEventListener("resize", updateRect);
+        return () => window.removeEventListener("resize", updateRect);
+      }
+    }
   }, [guideStep]);
 
   const handleRegisterClick = () => {
@@ -62,6 +89,19 @@ export const WelcomeScreen = ({
 
   const handleSkipGuide = () => {
     setGuideStep("complete");
+  };
+
+  const handleRemixClick = () => {
+    setGuideStep("remix-intro");
+    onRemixWork();
+  };
+
+  const handleRemixIntroNext = () => {
+    setGuideStep("remix-prompt");
+  };
+
+  const handleRemixPromptNext = () => {
+    setGuideStep("remix-complete");
   };
 
   return (
