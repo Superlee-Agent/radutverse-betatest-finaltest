@@ -292,6 +292,7 @@ const IpImagineInput = ({
           <textarea
             ref={inputRef as any}
             data-chat-input
+            data-imagine-input
             value={input}
             onChange={(event) => setInput(event.target.value)}
             onKeyDown={handleKeyDown}
