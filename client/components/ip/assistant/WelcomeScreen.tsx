@@ -92,16 +92,9 @@ export const WelcomeScreen = ({
   };
 
   const handleRemixClick = () => {
-    setGuideStep("remix-intro");
+    // Store flag to start tour on IP Imagine page
+    sessionStorage.setItem("start-ip-imagine-tour", "true");
     onRemixWork();
-  };
-
-  const handleRemixIntroNext = () => {
-    setGuideStep("remix-prompt");
-  };
-
-  const handleRemixPromptNext = () => {
-    setGuideStep("remix-complete");
   };
 
   return (
