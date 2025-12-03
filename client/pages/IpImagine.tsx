@@ -6,6 +6,7 @@ import React, {
   useState,
 } from "react";
 import { AnimatePresence, motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 import { usePrivy, useWallets } from "@privy-io/react-auth";
 import DashboardLayout from "@/components/layout/DashboardLayout";
 import ChatHeaderActions from "@/components/ip/assistant/ChatHeaderActions";
@@ -469,12 +470,15 @@ const IpImagine = () => {
     />
   );
 
+  const navigate = useNavigate();
+
   return (
     <DashboardLayout
       title="IP Imagine"
       avatarSrc={null}
       actions={headerActions}
       sidebarExtras={sidebarExtras}
+      onLogoClick={() => navigate("/")}
     >
       <div className="chat-box px-3 sm:px-4 md:px-12 pt-4 pb-24 flex-1 overflow-y-auto bg-transparent scroll-smooth">
         <AnimatePresence initial={false} mode="popLayout">
