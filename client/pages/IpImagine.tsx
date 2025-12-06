@@ -200,7 +200,9 @@ const IpImagine = () => {
 
         const url = URL.createObjectURL(blob);
 
-        // Calculate hashes and check whitelist
+        // Calculate hashes and check whitelist - TEMPORARILY DISABLED
+        // TODO: Re-enable hash checking when needed
+        /*
         setAttachmentLoading(true);
         try {
           const hash = await calculateBlobHash(blob);
@@ -256,6 +258,7 @@ const IpImagine = () => {
           console.error("Remix analysis failed:", err);
           setAttachmentLoading(false);
         }
+        */
 
         // default: attach as additional image
         setPreviewImages((prev) => ({
