@@ -11,7 +11,8 @@ import { usePrivy, useWallets } from "@privy-io/react-auth";
 import DashboardLayout from "@/components/layout/DashboardLayout";
 import ChatHeaderActions from "@/components/ip/assistant/ChatHeaderActions";
 import SidebarExtras from "@/components/ip/assistant/SidebarExtras";
-import { IpImagineInput, IpImagineTour } from "@/components/ip/imagine";
+import IpImagineInput from "@/components/ip/imagine/Input";
+import { IpImagineTour } from "@/components/ip/imagine";
 import {
   PopularIPGrid,
   AddRemixImageModal,
