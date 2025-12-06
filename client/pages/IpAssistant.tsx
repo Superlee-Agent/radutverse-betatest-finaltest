@@ -1055,66 +1055,66 @@ const IpAssistant = () => {
         await runDetection(imageToProcess.blob, imageToProcess.name);
         setPreviewImages({ remixImage: null, additionalImage: null });
       } else if (lastUploadBlobRef.current) {
-// DISABLED:         // Hash Detection for previously uploaded images
-// DISABLED:         try {
-// DISABLED:           const hash = await calculateBlobHash(lastUploadBlobRef.current);
-// DISABLED:           const pHash = await calculatePerceptualHash(
-// DISABLED:             lastUploadBlobRef.current,
-// DISABLED:           );
-// DISABLED:           console.log(
-// DISABLED:             "[Hash Detection] SHA256:",
-// DISABLED:             hash,
-// DISABLED:             "pHash:",
-// DISABLED:             pHash,
-// DISABLED:             "(from previous upload)",
-// DISABLED:           );
-// DISABLED: 
-// DISABLED:           const hashCheckResponse = await fetch("/api/check-remix-hash", {
-// DISABLED:             method: "POST",
-// DISABLED:             headers: { "Content-Type": "application/json" },
-// DISABLED:             body: JSON.stringify({ hash, pHash }),
-// DISABLED:           });
-// DISABLED: 
-// DISABLED:           if (hashCheckResponse.ok) {
-// DISABLED:             const hashCheck = await hashCheckResponse.json();
-// DISABLED:             if (hashCheck.found) {
-// DISABLED:               // Hash found - offer remix instead of blocking
-// DISABLED:               autoScrollNextRef.current = true;
-// DISABLED: 
-// DISABLED:               // Check if derivatives are allowed
-// DISABLED:               const derivativesAllowed = hashCheck.derivativesAllowed !== false;
-// DISABLED:               const warningText = derivativesAllowed
-// DISABLED:                 ? `⚠️ This is copyrighted content. Remixing is allowed.`
-// DISABLED:                 : `⚠��� This is copyrighted content.`;
-// DISABLED: 
-// DISABLED:               const metadata = hashCheck.metadata || {};
-// DISABLED:               const warningMessage: Message = {
-// DISABLED:                 id: `msg-${Date.now()}`,
-// DISABLED:                 from: "bot",
-// DISABLED:                 text: warningText,
-// DISABLED:                 ts: getCurrentTimestamp(),
-// DISABLED:                 action: {
-// DISABLED:                   type: "remix",
-// DISABLED:                   label: "Remix this",
-// DISABLED:                   imageBlob: lastUploadBlobRef.current!,
-// DISABLED:                   imageName: lastUploadNameRef.current || "image.jpg",
-// DISABLED:                   ipId: metadata.ipId,
-// DISABLED:                   title: metadata.title,
-// DISABLED:                   disabled: !derivativesAllowed,
-// DISABLED:                   whitelistDetails: metadata as any,
-// DISABLED:                 },
-// DISABLED:               };
-// DISABLED:               setMessages((prev) => [...prev, warningMessage]);
-// DISABLED:               return;
-// DISABLED:             }
-// DISABLED:           }
-// DISABLED:         } catch (hashError) {
-// DISABLED:           console.warn(
-// DISABLED:             "Hash check failed, continuing with registration:",
-// DISABLED:             hashError,
-// DISABLED:           );
-// DISABLED:           // Continue to OpenAI analysis if hash check fails
-// DISABLED:         }
+        // DISABLED:         // Hash Detection for previously uploaded images
+        // DISABLED:         try {
+        // DISABLED:           const hash = await calculateBlobHash(lastUploadBlobRef.current);
+        // DISABLED:           const pHash = await calculatePerceptualHash(
+        // DISABLED:             lastUploadBlobRef.current,
+        // DISABLED:           );
+        // DISABLED:           console.log(
+        // DISABLED:             "[Hash Detection] SHA256:",
+        // DISABLED:             hash,
+        // DISABLED:             "pHash:",
+        // DISABLED:             pHash,
+        // DISABLED:             "(from previous upload)",
+        // DISABLED:           );
+        // DISABLED:
+        // DISABLED:           const hashCheckResponse = await fetch("/api/check-remix-hash", {
+        // DISABLED:             method: "POST",
+        // DISABLED:             headers: { "Content-Type": "application/json" },
+        // DISABLED:             body: JSON.stringify({ hash, pHash }),
+        // DISABLED:           });
+        // DISABLED:
+        // DISABLED:           if (hashCheckResponse.ok) {
+        // DISABLED:             const hashCheck = await hashCheckResponse.json();
+        // DISABLED:             if (hashCheck.found) {
+        // DISABLED:               // Hash found - offer remix instead of blocking
+        // DISABLED:               autoScrollNextRef.current = true;
+        // DISABLED:
+        // DISABLED:               // Check if derivatives are allowed
+        // DISABLED:               const derivativesAllowed = hashCheck.derivativesAllowed !== false;
+        // DISABLED:               const warningText = derivativesAllowed
+        // DISABLED:                 ? `⚠️ This is copyrighted content. Remixing is allowed.`
+        // DISABLED:                 : `⚠��� This is copyrighted content.`;
+        // DISABLED:
+        // DISABLED:               const metadata = hashCheck.metadata || {};
+        // DISABLED:               const warningMessage: Message = {
+        // DISABLED:                 id: `msg-${Date.now()}`,
+        // DISABLED:                 from: "bot",
+        // DISABLED:                 text: warningText,
+        // DISABLED:                 ts: getCurrentTimestamp(),
+        // DISABLED:                 action: {
+        // DISABLED:                   type: "remix",
+        // DISABLED:                   label: "Remix this",
+        // DISABLED:                   imageBlob: lastUploadBlobRef.current!,
+        // DISABLED:                   imageName: lastUploadNameRef.current || "image.jpg",
+        // DISABLED:                   ipId: metadata.ipId,
+        // DISABLED:                   title: metadata.title,
+        // DISABLED:                   disabled: !derivativesAllowed,
+        // DISABLED:                   whitelistDetails: metadata as any,
+        // DISABLED:                 },
+        // DISABLED:               };
+        // DISABLED:               setMessages((prev) => [...prev, warningMessage]);
+        // DISABLED:               return;
+        // DISABLED:             }
+        // DISABLED:           }
+        // DISABLED:         } catch (hashError) {
+        // DISABLED:           console.warn(
+        // DISABLED:             "Hash check failed, continuing with registration:",
+        // DISABLED:             hashError,
+        // DISABLED:           );
+        // DISABLED:           // Continue to OpenAI analysis if hash check fails
+        // DISABLED:         }
 
         // Hash check passed - proceed to OpenAI image classification
         await runDetection(
