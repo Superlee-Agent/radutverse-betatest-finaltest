@@ -6,7 +6,7 @@ import DashboardLayout from "@/components/layout/DashboardLayout";
 import { Button } from "@/components/ui/button";
 import CompactResultCard from "@/components/ip/imagine/results/CompactResultCard";
 import ResultUpscaleModal from "@/components/ip/imagine/results/ResultUpscaleModal";
-import IpImagineInput from "@/components/ip/imagine/Input";
+import { IpImagineInput } from "@/components/ip/imagine";
 import ChatHeaderActions from "@/components/ip/assistant/ChatHeaderActions";
 import SidebarExtras from "@/components/ip/assistant/SidebarExtras";
 import { CreationContext, Creation } from "@/context/CreationContext";
