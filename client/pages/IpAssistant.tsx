@@ -980,7 +980,9 @@ const IpAssistant = () => {
         });
         await new Promise((resolve) => setTimeout(resolve, 300));
 
-        // Hash Detection - Check before OpenAI analysis
+        // Hash Detection - TEMPORARILY DISABLED
+        // TODO: Re-enable hash detection when needed
+        /*
         try {
           const hash = await calculateBlobHash(imageToProcess.blob);
           const pHash = await calculatePerceptualHash(imageToProcess.blob);
@@ -1047,6 +1049,7 @@ const IpAssistant = () => {
           );
           // Continue to OpenAI analysis if hash check fails
         }
+        */
 
         // Hash check passed - proceed to OpenAI image classification
         await runDetection(imageToProcess.blob, imageToProcess.name);
